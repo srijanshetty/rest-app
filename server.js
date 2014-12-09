@@ -1,6 +1,13 @@
 // Required packages
 var express = require('express');
 
+// Connect to the server
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/beerlocker');
+
+// Initiate the Beer model
+var Beer = require('./models/beer');
+
 // Create the app
 var app = express();
 
