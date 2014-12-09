@@ -1,29 +1,26 @@
 // Required packages
 var express = require('express');
-
-// Connect to the server
+var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/beerlocker');
-
-// Initiate the Beer model
-var Beer = require('./models/beer');
-
-// Create the app
-var app = express();
 
 // Use the environment defined port or 3000
 var port = process.env.PORT || 3000;
 
-// Create our Express router
-var router = express.Router();
+// Routers
+var beerRouter = require('./routes/beer');
 
-// Initiall dummy route
-router.get('/', function (req, res) {
-    res.json({ message: 'hooray! It works'});
-});
+// Initiate the app
+var app = express();
 
-// Register all our routes with /api
-app.use('/api', router);
+// Connect to the server
+mongoose.connect('mongodb://localhost:27017/beerlocker');
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+// Register the beerRouter
+app.use('/api', beerRouter);
 
 // Start the server
 app.listen(port);
