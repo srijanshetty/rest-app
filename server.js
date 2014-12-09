@@ -8,6 +8,7 @@ var port = process.env.PORT || 3000;
 
 // Routers
 var beerRouter = require('./routes/beer');
+var userRouter = require('./routes/user');
 
 // Initiate the app
 var app = express();
@@ -20,7 +21,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Register the beerRouter
-app.use('/api', beerRouter);
+app.use('/api/beers', beerRouter);
+app.use('/api/users', userRouter);
 
 // Start the server
 app.listen(port);
