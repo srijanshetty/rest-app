@@ -1,5 +1,6 @@
 // Required packages
 var express = require('express');
+var passport = require('passport');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
@@ -19,6 +20,9 @@ mongoose.connect('mongodb://localhost:27017/beerlocker');
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+// Use Passport for authentication
+app.use(passport.initialize());
 
 // Register the beerRouter
 app.use('/api/beers', beerRouter);

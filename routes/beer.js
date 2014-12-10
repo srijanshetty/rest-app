@@ -1,21 +1,23 @@
 var express = require('express');
-
-// Create our Express router
 var router = express.Router();
 
-// Initialize the Beer model
+// Beer controller
 var beerController = require('../controllers/beer');
+
+// Authentication controller
+var authController = require('../controllers/auth');
 
 // Create a route for /beers
 router.route('/')
-      .post(beerController.postBeers)
-      .get(beerController.getBeers);
+      .post(authController.isAuthenticated, beerController.postBeers)
+      .get(authController.isAuthenticated, beerController.getBeers);
 
 // Create routes for /beers/:beer_id
 router.route('/:beer_id')
-      .get(beerController.getBeer)
-      .put(beerController.putBeer)
-      .delete(beerController.deleteBeer);
+      .get(authController.isAuthenticated, beerController.getBeer)
+      .put(authController.isAuthenticated, beerController.putBeer)
+      .delete(authController.isAuthenticated, beerController.deleteBeer);
 
+// Export the router
 module.exports = router;
 
