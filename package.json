@@ -8,5 +8,26 @@
     "mongoose": "^3.8.20",
     "passport": "^0.2.1",
     "passport-http": "^0.2.2"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "version": "1.0.0",
+  "description": "a simple rest app using MEAN - A",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srijanshetty/rest-app"
+  },
+  "keywords": [
+    "MEAN",
+    "REST",
+    "beer"
+  ],
+  "author": "Srijan R. Shetty",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/srijanshetty/rest-app/issues"
+  },
+  "homepage": "https://github.com/srijanshetty/rest-app"
 }
