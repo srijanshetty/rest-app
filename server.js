@@ -24,6 +24,7 @@ var express = require('express');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var logger = require('morgan');
 
 // Use the environment defined port or 3000
 var port = process.env.PORT || 3000;
@@ -38,6 +39,10 @@ var app = express();
 // Connect to the server
 mongoose.connect('mongodb://localhost:27017/beerlocker');
 
+// Logger
+app.use(logger('dev'));
+
+// Parse urlencoded bodies
 app.use(bodyParser.urlencoded({
     extended: true
 }));
